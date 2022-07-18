@@ -131,7 +131,17 @@ def resample(
     t_out = np.arange(shape[axis]) * time_increment
 
     # if parallel:
-    resample_f_p(
+    # resample_f_p(
+    #     x.swapaxes(-1, axis),
+    #     t_out,
+    #     interp_win,
+    #     interp_delta,
+    #     precision,
+    #     scale,
+    #     y.swapaxes(-1, axis),
+    # )
+    # else:
+    resample_f_s(
         x.swapaxes(-1, axis),
         t_out,
         interp_win,
@@ -140,16 +150,6 @@ def resample(
         scale,
         y.swapaxes(-1, axis),
     )
-    # else:
-    #     resample_f_s(
-    #         x.swapaxes(-1, axis),
-    #         t_out,
-    #         interp_win,
-    #         interp_delta,
-    #         precision,
-    #         scale,
-    #         y.swapaxes(-1, axis),
-    #     )
 
     return y
 
@@ -250,7 +250,17 @@ def resample_nu(
         t_out = t_out * sr_orig
 
     # if parallel:
-    resample_f_p(
+    # resample_f_p(
+    #     x.swapaxes(-1, axis),
+    #     t_out,
+    #     interp_win,
+    #     interp_delta,
+    #     precision,
+    #     1.0,
+    #     y.swapaxes(-1, axis),
+    # )
+    # else:
+    resample_f_s(
         x.swapaxes(-1, axis),
         t_out,
         interp_win,
@@ -259,15 +269,5 @@ def resample_nu(
         1.0,
         y.swapaxes(-1, axis),
     )
-    # else:
-    #     resample_f_s(
-    #         x.swapaxes(-1, axis),
-    #         t_out,
-    #         interp_win,
-    #         interp_delta,
-    #         precision,
-    #         1.0,
-    #         y.swapaxes(-1, axis),
-    #     )
 
     return y
