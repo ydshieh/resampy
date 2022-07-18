@@ -6,7 +6,7 @@ import numpy as np
 
 from .filters import get_filter
 
-from .interpn import resample_f_s, resample_f_p
+from .interpn import resample_f_s
 
 __all__ = ["resample", "resample_nu"]
 
