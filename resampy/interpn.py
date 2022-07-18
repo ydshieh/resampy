@@ -114,34 +114,34 @@ def resample_f_p(x, t_out, interp_win, interp_delta, num_table, scale, y):
     _resample_loop_p(x, t_out, interp_win, interp_delta, num_table, scale, y)
 
 
-@guvectorize(
-    [
-        (int16[:], float64[:], float64[:], float64[:], int32, float32, int16[:]),
-        (int32[:], float64[:], float64[:], float64[:], int32, float32, int32[:]),
-        (int64[:], float64[:], float64[:], float64[:], int32, float32, int64[:]),
-        (float32[:], float64[:], float64[:], float64[:], int32, float32, float32[:]),
-        (float64[:], float64[:], float64[:], float64[:], int32, float32, float64[:]),
-        (
-            complex64[:],
-            float64[:],
-            float64[:],
-            float64[:],
-            int32,
-            float32,
-            complex64[:],
-        ),
-        (
-            complex128[:],
-            float64[:],
-            float64[:],
-            float64[:],
-            int32,
-            float32,
-            complex128[:],
-        ),
-    ],
-    "(n),(m),(p),(p),(),()->(m)",
-    nopython=True,
-)
+# @guvectorize(
+#     [
+#         (int16[:], float64[:], float64[:], float64[:], int32, float32, int16[:]),
+#         (int32[:], float64[:], float64[:], float64[:], int32, float32, int32[:]),
+#         (int64[:], float64[:], float64[:], float64[:], int32, float32, int64[:]),
+#         (float32[:], float64[:], float64[:], float64[:], int32, float32, float32[:]),
+#         (float64[:], float64[:], float64[:], float64[:], int32, float32, float64[:]),
+#         (
+#             complex64[:],
+#             float64[:],
+#             float64[:],
+#             float64[:],
+#             int32,
+#             float32,
+#             complex64[:],
+#         ),
+#         (
+#             complex128[:],
+#             float64[:],
+#             float64[:],
+#             float64[:],
+#             int32,
+#             float32,
+#             complex128[:],
+#         ),
+#     ],
+#     "(n),(m),(p),(p),(),()->(m)",
+#     nopython=True,
+# )
 def resample_f_s(x, t_out, interp_win, interp_delta, num_table, scale, y):
     _resample_loop_s(x, t_out, interp_win, interp_delta, num_table, scale, y)
