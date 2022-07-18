@@ -78,8 +78,8 @@ def _resample_loop(x, t_out, interp_win, interp_delta, num_table, scale, y):
 
 
 _resample_loop_p = jit(nopython=True, nogil=True, parallel=True)(_resample_loop)
-_resample_loop_s = jit(nopython=True, nogil=True, parallel=False)(_resample_loop)
-
+# _resample_loop_s = jit(nopython=True, nogil=True, parallel=False)(_resample_loop)
+_resample_loop_s = _resample_loop
 
 @guvectorize(
     [
